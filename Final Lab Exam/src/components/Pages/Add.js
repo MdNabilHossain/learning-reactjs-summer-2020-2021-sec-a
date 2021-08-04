@@ -5,18 +5,18 @@ const Add = () => {
     let history = useHistory();
   const [user, setUser] = useState({
     name: "",
-    username: "",
+    address: "",
     email: "",
     phone: "",
-    website: "",
+    quality: "",
   });
-  const {name,username,email,phone,website} = user;
+  const {name,address,email,phone,quality} = user;
   const onInputChange = (e) => {
      setUser({...user,[e.target.name]:e.target.value})
   }
   const onSubmit = async (e)=>{
       e.preventDefault();
-      await axios.post("http://localhost:3001/users",user);
+      await axios.post("http://127.0.0.1:8000/api/guide",user);
       history.push('/employees/list');
   }
   return (
@@ -38,10 +38,10 @@ const Add = () => {
             <div class="mb-3">
               <input
                 type="text"
-                name="username"
-                value={username}
+                name="address"
+                value={address}
                 class="form-control"
-                placeholder="Enter User Name"
+                placeholder="Enter address"
                 onChange={(e)=>onInputChange(e)}
               />
             </div>
@@ -68,10 +68,10 @@ const Add = () => {
             <div class="mb-3">
               <input
                 type="text"
-                name="website"
-                value={website}
+                name="quality"
+                value={quality}
                 class="form-control"
-                placeholder="Enter Website Name"
+                placeholder="Enter quality"
                 onChange={(e)=>onInputChange(e)}
               />
             </div>

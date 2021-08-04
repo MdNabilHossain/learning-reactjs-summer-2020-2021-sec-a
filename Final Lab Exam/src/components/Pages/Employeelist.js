@@ -13,11 +13,11 @@ const EmployeeList = () => {
   //   setUsers(result.data.reverse());
   // };
   const loadUser = async (e) => {
-    let result = await fetch(`http://127.0.0.1:8000/api/show`, {
+    let result = await fetch(`http://127.0.0.1:8000/api/guide/show`, {
         method:'GET'
     });
     result = await result.json();
-    // console.log(result);
+    //console.log(result);
     setUsers(result.reverse());
 }
   // const deleteUser = async (id) => {
@@ -25,7 +25,7 @@ const EmployeeList = () => {
   //   loadUser();
   // }
   const deleteUser = async (id) =>{
-    let result = await fetch(`http://127.0.0.1:8000/api/delete/${id}`,{
+    let result = await fetch(`http://127.0.0.1:8000/api/guide/delete/${id}`,{
       method:'DELETE'
     });
     result = await result.json();
@@ -33,14 +33,14 @@ const EmployeeList = () => {
   }
   return (
     <div class="container">
-      <h1 class="mb-5">Employee List</h1>
+      <h1 class="mb-5">Guide List</h1>
       <table class="table table-bordered border-primary">
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">User Name</th>
+            <th scope="col">Name</th>   
             <th scope="col">Email</th>
+            <th scope="col">Phone NO:</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -50,8 +50,8 @@ const EmployeeList = () => {
               <tr>
                 <th scope="row">{index + 1}</th>
                 <td>{user.name}</td>
-                <td>{user.username}</td>
                 <td>{user.email}</td>
+                <td>{user.phone}</td>
                 <td>
                     <Link class="btn btn-primary me-2" to={`/user/${user.id}`}>View</Link>
                     <Link class="btn btn-warning me-2" to={`/user/edit/${user.id}`}>Edit</Link>
